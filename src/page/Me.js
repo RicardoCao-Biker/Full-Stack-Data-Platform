@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 
-export default class Home extends Component {
-  render() {
-    return <div>11111111111</div>;
-  }
+export default function (props){
+  // render() {
+  return <div>11111133311111-{props.a}</div>;
+  // }
 }
