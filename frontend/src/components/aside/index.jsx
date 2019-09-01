@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Layout, Menu, Icon } from 'antd';
+import { Link } from 'react-router-dom'
+import routeInfo from '../../utils/routeInfo'
 
 import './index.scss';
 
@@ -11,22 +13,12 @@ export default class Container extends Component {
   constructor(props) {
     super(props);
     this.state = {};
-    this.asideRoute = {
-      'news': [{
-        name: '国内新闻',
-        path: 'china'
-      }, {
-        name: '国外新闻',
-        path: 'world'
-      }],
-      'comment': [],
-      'competition': [],
-      'overview': [],
-      'industry': []
-    };
+    // console.log(window.location.pathname);
+    // console.log(routeInfo);
   }
 
   render() {
+    const path = window.location.pathname.split('/');
     return (
       <Sider width={200} id="sider" style={{height: 'calc( 100vh - 64px)'}}>
         <Menu
@@ -34,11 +26,10 @@ export default class Container extends Component {
           defaultSelectedKeys={['1']}
           defaultOpenKeys={['sub1']}
           style={{ height: '100%', borderRight: 0 }}
-        >
-          <Menu.Item key="1">option1</Menu.Item>
-          <Menu.Item key="2">option2</Menu.Item>
-          <Menu.Item key="3">option3</Menu.Item>
-          <Menu.Item key="4">option4</Menu.Item>
+        > 
+          {path[1] ? routeInfo[path[1]].map(p => (
+            <Menu.Item key={p.path}><Link to={`/${path[1]}/${p.path}`}>{p.name}</Link></Menu.Item>
+          )) : null}
         </Menu>
       </Sider>
     );
