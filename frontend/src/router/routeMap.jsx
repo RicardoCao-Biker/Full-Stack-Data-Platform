@@ -15,11 +15,18 @@ import NoFound from '../page/NoFound'
 import routeInfo from '../utils/routeInfo'
 
 const components = {
-  China, World, All, Baidu, Huawei, Tencent, Xiaomi
+    China, World, All, Baidu, Huawei, Tencent, Xiaomi
 };
 
 class RouterMap extends React.Component {
   render() {
+    Object.entries(routeInfo).map(([p,r]) => {
+        console.log(p);
+        console.log(r);
+        r.map(i=>{
+            console.log(i);
+        })
+    })
     return (
       <Router>
         <Switch>
@@ -29,16 +36,18 @@ class RouterMap extends React.Component {
               <Switch>
                 <Redirect exact path="/" to="/news" />
                 {
-                  Object.entries(routeInfo).map(([p,r],index1) => {              
+                  Object.entries(routeInfo).map(([p,r], index1) => {
                     return (
-                      <Route key={`${index1}`} render={() => (
-                        <Redirect exact path={`/${p}`} to={`/${p}/${r[0] ? r[0].path : ''}`} />
-                        {
-                          r.map((i, index2) => (
-                            <Route path={`/${p}/${i.path}`} key={`${index1}${index2}`} component={components[i.component]} />
-                          ))
-                        }
-                      )}/>
+                        <Route path={`/${p}`} key={index1} render={() => (
+                            <>
+                                <Redirect exact path={`/${p}`} to={`/${p}/${r[0] ? r[0].path : ''}`} />
+                                {
+                                    r.map((i, index2) => (
+                                        <Route path={`/${p}/${i.path}`} key={`${index1}${index2}`} component={components[i.component]} />
+                                    ))
+                                }
+                            </>
+                        )}/>
                     )
                   })
                 }
@@ -52,4 +61,4 @@ class RouterMap extends React.Component {
   }
 }
 
-export default RouterMap
+export default RouterMap;
