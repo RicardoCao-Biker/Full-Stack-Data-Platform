@@ -1,9 +1,11 @@
 #navigator {
+  height: 60px;
   .menu{
-    line-height: 64px;
+    line-height: 60px;
     display:inline-block;
     vertical-align: top;
     width:70%;
+    font-size:15px;
   }
   .title{
     color:#ffffff;

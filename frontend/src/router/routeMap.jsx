@@ -20,13 +20,6 @@ const components = {
 
 class RouterMap extends React.Component {
   render() {
-    Object.entries(routeInfo).map(([p,r]) => {
-        console.log(p);
-        console.log(r);
-        r.map(i=>{
-            console.log(i);
-        })
-    })
     return (
       <Router>
         <Switch>
@@ -39,14 +32,14 @@ class RouterMap extends React.Component {
                   Object.entries(routeInfo).map(([p,r], index1) => {
                     return (
                         <Route path={`/${p}`} key={index1} render={() => (
-                            <>
+                            <Switch>
                                 <Redirect exact path={`/${p}`} to={`/${p}/${r[0] ? r[0].path : ''}`} />
                                 {
                                     r.map((i, index2) => (
                                         <Route path={`/${p}/${i.path}`} key={`${index1}${index2}`} component={components[i.component]} />
                                     ))
                                 }
-                            </>
+                            </Switch>
                         )}/>
                     )
                   })

@@ -19,7 +19,7 @@ export default class Container extends Component {
         <Navigator />
         <Layout>
           <Aside />
-          <Layout style={{ padding: '0 20px 0 20px' }}>
+          <Layout style={{ padding: '0 12px 0 12px' }}>
             <Content
               style={{
                 background: '#fff',

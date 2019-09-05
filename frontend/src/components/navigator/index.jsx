@@ -1,26 +1,28 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { Layout, Menu } from 'antd';
+import { withRouter } from "react-router";
 
 import './index.scss'
 
 const { SubMenu } = Menu;
 const { Header } = Layout;
 
-export default class Navigator extends Component {
+class Navigator extends Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
 
   render() {
+    const currenRootPath = this.props.location.pathname.split('/')[1];
     return (
         <Header id="navigator">
           <span className="title">Rico数据平台</span>
           <Menu
             theme="dark"
             mode="horizontal"
-            defaultSelectedKeys={["news"]}
+            defaultSelectedKeys={[currenRootPath ? currenRootPath : 'news']}
             className="menu"
           >
             <Menu.Item key="news">
@@ -43,3 +45,5 @@ export default class Navigator extends Component {
     );
   }
 }
+
+export default withRouter(Navigator);
