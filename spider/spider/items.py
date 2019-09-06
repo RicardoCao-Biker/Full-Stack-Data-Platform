@@ -7,8 +7,13 @@
 
 import scrapy
 
-
-class SpiderItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+class TechItem(scrapy.Item):
+    time = scrapy.Field()
+    title = scrapy.Field()
+    url = scrapy.Field()
+    news_desc = scrapy.Field()
+    news_content = scrapy.Field()
+    platform_source = scrapy.Field()
+    news_id = scrapy.Field()
+    media_source = scrapy.Field()
+    img_cover = scrapy.Field()
