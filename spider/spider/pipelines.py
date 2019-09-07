@@ -1,11 +1,11 @@
-# -*- coding: utf-8 -*-
+from pymongo import MongoClient
 
-# Define your item pipelines here
-#
-# Don't forget to add your pipeline to the ITEM_PIPELINES setting
-# See: https://doc.scrapy.org/en/latest/topics/item-pipeline.html
+client = MongoClient('45.63.95.182', 27017)
+db = client['data']
+newsCollection = db['news']
 
-
-class SpiderPipeline(object):
+class TechnewsPipeline(object):
     def process_item(self, item, spider):
+        print('enter pipeline')
+        newsCollection.insert_one(item)
         return item

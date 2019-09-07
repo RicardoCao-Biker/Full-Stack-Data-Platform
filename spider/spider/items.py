@@ -8,12 +8,13 @@
 import scrapy
 
 class TechItem(scrapy.Item):
-    time = scrapy.Field()
+    pub_time = scrapy.Field()
     title = scrapy.Field()
     url = scrapy.Field()
     news_desc = scrapy.Field()
     news_content = scrapy.Field()
     platform_source = scrapy.Field()
     news_id = scrapy.Field()
+    _id = scrapy.Field()
     media_source = scrapy.Field()
     img_cover = scrapy.Field()
