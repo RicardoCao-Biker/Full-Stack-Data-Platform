@@ -6,6 +6,5 @@ newsCollection = db['news']
 
 class TechnewsPipeline(object):
     def process_item(self, item, spider):
-        print('enter pipeline')
         newsCollection.insert_one(item)
         return item
