@@ -1,0 +1,28 @@
+#top-bar {
+    width:100%;
+    height: 65px;
+    line-height: 66px;
+    border-bottom: 1px solid #e8e8e8;
+    vertical-align: middle;
+    .search-bar{
+        width:20%;
+        height:64px;
+        padding-top:12px;
+        float:right;
+        margin-right:20px;
+    }
+    .menu{
+        display:inline-block;
+    }
+    .ant-menu-horizontal{
+        line-height:62px;
+    }
+    .user-name{
+        float:right;
+        margin-right:50px;
+        cursor: pointer;
+    }
+    .user-name:hover{
+        color:#409EFF;
+    }
+}
