@@ -16,19 +16,19 @@ export default class Container extends Component {
     return (
       <Layout>
         <Navigator />
-        {/* <Layout>
-          <Layout style={{ padding: '0 12px 0 12px' }}>
+        <Layout>
+          <Layout>
             <Content
               style={{
                 background: '#fff',
-                padding: 20,
+                padding: 0,
                 margin: 0
               }}
             >
               {this.props.children}
             </Content>
           </Layout>
-        </Layout> */}
+        </Layout>
       </Layout>
     );
   }
