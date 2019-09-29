@@ -1,15 +1,22 @@
 #navigator {
-  height: 60px;
-  .menu{
-    line-height: 60px;
-    display:inline-block;
-    vertical-align: top;
-    width:70%;
-    font-size:15px;
-  }
+  height: 100vh;
   .title{
     color:#ffffff;
     font-size:25px;
-    padding-right:30px;
+    line-height:60px;
+    padding-left:24px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #ffffff;
+  }
+  .subtitle{
+    font-size:12px;
+    color: #ffffff;
+    margin-left:5px;
+  }
+  .menu{
+    .ant-menu-item{
+      margin-top: 0 !important;
+    }
   }
 }

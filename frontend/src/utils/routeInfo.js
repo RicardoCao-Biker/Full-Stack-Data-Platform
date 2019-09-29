@@ -1,37 +1,28 @@
 // 路由信息
 
 module.exports = {
-  'news': [{
-    name: '国内新闻',
-    path: 'china',
-    component: 'China'
+  'gold': {
+    title: '黄金',
+    icon: 'dollar',
+    child: [{
+    name: '国际黄金',
+    path: '/gold/international',
+    component: 'InternationalGold'
   }, {
-    name: '国外新闻',
-    path: 'world',
-    component: 'World'
-  }],
-  'comment': [{
-    name: '全平台',
-    path: 'all',
-    component: 'All'
+    name: '国内黄金',
+    path: '/gold/china',
+    component: 'ChinaGold'
+  }]},
+  'news': {
+    title: '新闻',
+    icon: 'profile',
+    child:[{
+    name: '国际新闻',
+    path: '/news/international',
+    component: 'InternationalNews'
   }, {
-    name: '华为应用市场',
-    path: 'huawei',
-    component: 'Huawei'
-  }, {
-    name: '应用宝',
-    path: 'tencent',
-    component: 'Tencent'
-  }, {
-    name: '小米应用商店',
-    path: 'xiaomi',
-    component: 'Xiaomi'
-  }, {
-    name: '百度手机助手',
-    path: 'baidu',
-    component: 'Baidu'
-  }],
-  'competition': [],
-  'overview': [],
-  'industry': []
+      name: '国内新闻',
+      path: '/news/china',
+      component: 'ChinaNews'
+    }]}
 }

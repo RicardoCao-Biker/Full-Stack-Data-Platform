@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { Layout, Menu } from 'antd';
+import { Layout, Menu, Icon } from 'antd';
 import { withRouter } from "react-router";
+import routeInfo from '../../utils/routeInfo'
 
 import './index.scss'
 
 const { SubMenu } = Menu;
-const { Header } = Layout;
+const { Sider } = Layout;
 
 class Navigator extends Component {
   constructor(props) {
@@ -17,31 +18,41 @@ class Navigator extends Component {
   render() {
     const currenRootPath = this.props.location.pathname.split('/')[1];
     return (
-        <Header id="navigator">
-          <span className="title">Rico数据平台</span>
+        <Sider id="navigator">
+          <div className="title"><em>Rico</em><span className="subtitle">platform</span></div>
           <Menu
             theme="dark"
-            mode="horizontal"
+            mode="inline"
             defaultSelectedKeys={[currenRootPath ? currenRootPath : 'news']}
             className="menu"
+            // 使用一级路由和二级路由作为默认打开的索引
+            defaultOpenKeys={[this.props.location.pathname.split('/')[1]]}
+            defaultSelectedKeys={[this.props.location.pathname]}
           >
-            <Menu.Item key="news">
-              <Link to="/news">新闻聚合</Link>
-            </Menu.Item>
-            <Menu.Item key="comment">
-              <Link to="/comment">评论分析</Link>
-            </Menu.Item>
-            <Menu.Item key="competition">
-              <Link to="/competition">竞品分析</Link>
-            </Menu.Item>
-            <Menu.Item key="overview">
-              <Link to="/overview">大盘分析</Link>
-            </Menu.Item>
-            <Menu.Item key="industry">
-              <Link to="/industry">行业报告</Link>
-            </Menu.Item>
+            {
+            Object.entries(routeInfo).map(([routeTitle,routeItem]) => {
+                return (
+                  <SubMenu key={routeTitle} title={
+                      <span>
+                        <Icon type={routeItem.icon}></Icon>
+                        <span>{routeItem.title}</span>
+                      </span>
+                    }>
+                      {
+                        routeItem.child.map(subItem => {
+                          return (
+                            <Menu.Item key={subItem.path}>
+                              <Link to={subItem.path}>{subItem.name}</Link>
+                            </Menu.Item>
+                          );
+                        })
+                      }
+                  </SubMenu>
+                );
+              })
+            }
           </Menu>
-        </Header>
+        </Sider>
     );
   }
 }
