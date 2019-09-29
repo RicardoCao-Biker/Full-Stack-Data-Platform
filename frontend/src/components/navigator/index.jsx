@@ -19,7 +19,7 @@ class Navigator extends Component {
     const currenRootPath = this.props.location.pathname.split('/')[1];
     return (
         <Sider id="navigator">
-          <div className="title"><em>Rico</em><span className="subtitle">platform</span></div>
+          <div className="title"><b><em>Rico</em></b><span className="subtitle">platform</span></div>
           <Menu
             theme="dark"
             mode="inline"
@@ -30,25 +30,39 @@ class Navigator extends Component {
             defaultSelectedKeys={[this.props.location.pathname]}
           >
             {
-            Object.entries(routeInfo).map(([routeTitle,routeItem]) => {
-                return (
-                  <SubMenu key={routeTitle} title={
-                      <span>
-                        <Icon type={routeItem.icon}></Icon>
-                        <span>{routeItem.title}</span>
-                      </span>
-                    }>
-                      {
-                        routeItem.child.map(subItem => {
-                          return (
-                            <Menu.Item key={subItem.path}>
-                              <Link to={subItem.path}>{subItem.name}</Link>
-                            </Menu.Item>
-                          );
-                        })
-                      }
-                  </SubMenu>
-                );
+            Object.entries(routeInfo).map(([routeTitle, routeItem]) => {
+                if (!routeItem.child) {
+                    return (
+                        <Menu.Item key={routeItem.path}>
+                            <Link to={routeItem.path}>
+                                <span>
+                                    <Icon type={routeItem.icon}></Icon>
+                                    <span>{routeItem.title}</span>
+                                </span>
+                            </Link>
+                        </Menu.Item>
+                    );
+                }
+                else {
+                    return (
+                    <SubMenu key={routeTitle} title={
+                        <span>
+                            <Icon type={routeItem.icon}></Icon>
+                            <span>{routeItem.title}</span>
+                        </span>
+                        }>
+                        {
+                            routeItem.child.map(subItem => {
+                            return (
+                                <Menu.Item key={subItem.path}>
+                                <Link to={subItem.path}>{subItem.title}</Link>
+                                </Menu.Item>
+                            );
+                            })
+                        }
+                    </SubMenu>
+                    );
+                }
               })
             }
           </Menu>
