@@ -2,13 +2,13 @@
 
 module.exports = {
     'music': {
-        title: '音乐',
+        title: 'Music',
         icon: 'customer-service',
         path: '/music/index',
         component: 'MusicIndex'
     },
     'news': {
-        title: '新闻',
+        title: 'News',
         icon: 'profile',
         child: [{
             title: '国际新闻',

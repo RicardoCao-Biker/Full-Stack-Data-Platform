@@ -1,8 +1,14 @@
 #music-login{
     .wrapper{
-        margin-top: 20px;
-        margin-bottom: 20px;
+        // margin-top: 20px;
+        // margin-bottom: 20px;
+        width:60%;
         text-align: center;
+        margin: 0 auto;
+        img {
+            width: 100px;
+            height:75px;
+        }
     }
     .title{
         display:inline-block;
@@ -14,6 +20,7 @@
     }
     .submit{
         text-align: center;
-        margin-top: 30px;
+        margin: 30px auto 0 auto;
+        width:60%;
     }
 }

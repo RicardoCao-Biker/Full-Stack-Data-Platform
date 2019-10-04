@@ -25,34 +25,43 @@ class Topbar extends Component {
             loginVisible: true
         });
     }
+
     handleCancel = e => {
+        console.log(e);
+        console.log(2);
         this.setState({
-            visible: false,
+            loginVisible: false,
         });
     };
+    updateVisible = value => {
+        console.log(45);
+        this.setState({
+            loginVisible: value
+        });
+    }
     render() {
         
         return (
             <div id="top-bar">
                 <Menu className="menu" onClick={this.handleClick} selectedKeys={[this.state.current]} mode="horizontal">
                     <Menu.Item key="find">
-                        发现音乐
+                        Find Music
                     </Menu.Item>
                     <Menu.Item key="rank">
-                        排行榜
+                        Ranking
                     </Menu.Item>
                     <Menu.Item key="mine">
-                        我的音乐
+                        My Music
                     </Menu.Item>
                 </Menu>
-                <span className="user-name" onClick={this.handleLogin}>登录</span>
-                <Search className="search-bar" size="large" placeholder="搜索音乐" onSearch={value => console.log(value)} enterButton />
+                <span className="user-name" onClick={this.handleLogin}>Login</span>
+                <Search className="search-bar" size="large" placeholder="Search" onSearch={value => console.log(value)} enterButton />
                 <Modal
                     visible={this.state.loginVisible}
                     onCancel={this.handleCancel}
                     footer={null}
                 >
-                    <Login />
+                    <Login updateVisible={this.updateVisible}/>
                 </Modal>
             </div>
         );
