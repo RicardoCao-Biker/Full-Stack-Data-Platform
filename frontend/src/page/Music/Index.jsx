@@ -1,22 +1,29 @@
 import React from 'react';
-import { } from 'antd';
-import Topbar from '../../components/music/Topbar'
+import Topbar from '../../components/music/Topbar';
+import FindMusic from '../../components/music/FindMusic';
+import Ranking from '../../components/music/Ranking';
 import './Index.scss';
 
 export default class Music extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            email: '',
-            password: '',
-            noticeOpen: false
+            section: 'find'
         }
+    }
+
+    changeSection = section => {
+        this.setState({
+            section
+        })
     }
 
     render() {
         return (
             <div id="music">
-                <Topbar/>
+                <Topbar changeSection={this.changeSection}/>
+                <FindMusic />
+                <Ranking />
             </div>
         )
     }

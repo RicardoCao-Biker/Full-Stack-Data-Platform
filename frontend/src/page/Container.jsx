@@ -17,17 +17,17 @@ export default class Container extends Component {
       <Layout>
         <Navigator />
         <Layout>
-          <Layout>
             <Content
               style={{
                 background: '#fff',
                 padding: 0,
-                margin: 0
+                margin: 0,
+                height: '100vh',
+                overflow: 'scroll'
               }}
             >
               {this.props.children}
             </Content>
-          </Layout>
         </Layout>
       </Layout>
     );

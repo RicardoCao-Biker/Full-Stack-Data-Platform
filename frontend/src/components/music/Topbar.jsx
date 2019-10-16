@@ -1,5 +1,6 @@
 import React,{ Component } from 'react'
 import { Input, Menu, Modal } from 'antd';
+import { connect } from 'react-redux'
 import Login from './Login';
 
 import './topbar.scss';
@@ -19,6 +20,7 @@ class Topbar extends Component {
         this.setState({
             current: e.key
         });
+        this.props.changeSection(e.key);
     }
     handleLogin = () => {
         this.setState({
@@ -27,14 +29,11 @@ class Topbar extends Component {
     }
 
     handleCancel = e => {
-        console.log(e);
-        console.log(2);
         this.setState({
             loginVisible: false,
         });
     };
     updateVisible = value => {
-        console.log(45);
         this.setState({
             loginVisible: value
         });
@@ -54,7 +53,11 @@ class Topbar extends Component {
                         My Music
                     </Menu.Item>
                 </Menu>
-                <span className="user-name" onClick={this.handleLogin}>Login</span>
+                {   
+                    this.props.nickName ? 
+                        <span className="user-info"><img src={this.props.avatarUrl} className="avatar" /> {this.props.nickName}</span>
+                    : <span className="user-name" onClick={this.handleLogin}>Login</span>
+                }
                 <Search className="search-bar" size="large" placeholder="Search" onSearch={value => console.log(value)} enterButton />
                 <Modal
                     visible={this.state.loginVisible}
@@ -68,4 +71,15 @@ class Topbar extends Component {
     }
 }
 
-export default Topbar;
+const mapStateToProps = state => {
+    return {
+        nickName: state.musicReducer.nickName,
+        avatarUrl: state.musicReducer.avatarUrl
+    }
+}
+
+const TopbarCom = connect(
+    mapStateToProps
+)(Topbar)
+
+export default TopbarCom;

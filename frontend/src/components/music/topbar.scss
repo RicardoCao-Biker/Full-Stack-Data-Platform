@@ -4,6 +4,10 @@
     line-height: 66px;
     border-bottom: 1px solid #e8e8e8;
     vertical-align: middle;
+    position: fixed;
+    background-color:#fff;
+    top:0;
+    z-index: 1000;
     .search-bar{
         width:20%;
         height:64px;
@@ -24,5 +28,14 @@
     }
     .user-name:hover{
         color:#409EFF;
+    }
+    .avatar{
+        width:40px;
+        height:40px;
+        border-radius:20px;
+    }
+    .user-info{
+        float:right;
+        margin-right:50px;
     }
 }
